@@ -1,0 +1,6 @@
+<% if user_signed_in?%>
+    <canvas id="exercice" width="150" height="150" style="border:1px solid #000000;"></canvas>
+    <div id="message"></div>
+<%else%>
+    <p style="text-align:center"> Veuillez vous connecter pour jouer! :D </p>
+<%end%>

@@ -1,0 +1,32 @@
+<h1 style="text-align: center;"> Mon Profil </h1>
+<br />
+
+<div class="w3-row-padding w3-padding-16 w3-center" id="games">
+  <% current_user.games.each do |game| %>
+    <% if game.player_turn != nil %>
+      <% @bColor = "yellow" %>
+    <%else%>
+      <% if game.winner == current_user %>
+          <% @bColor = "green" %>
+      <%else%>
+          <% @bColor = "red" %>
+      <%end%>
+    <%end%>
+
+    <a href="/game/<%=game.id%>">
+      <div class="w3-quarter" style="min-height: 200px; background-color: <%=@bColor%>;">
+          <p>Game: <%=game.id%></p>
+          <% if game.player_turn != nil %>
+            <p> Partie en cours </br> Au tour de: <%=game.player_turn.email%>
+          <%end%>
+
+          <% if game.creator == current_user %>
+                <p>Opponent: <%=game.opponent.email%>
+          <%else%>
+                <p>Opponent: <%=game.creator.email%>
+          <%end%>
+
+      </div>
+    </a>
+  <% end %>
+</div>
