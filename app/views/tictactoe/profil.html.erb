@@ -1,6 +1,11 @@
 <h1 style="text-align: center;"> Mon Profil </h1>
 <br />
 
+<div>
+<p>Statistiques: <%= @wins.count %>/<%= @gamesDone %> </p>
+
+</div>
+
 <div class="w3-row-padding w3-padding-16 w3-center" id="games">
   <% current_user.games.each do |game| %>
     <% if game.player_turn != nil %>
@@ -21,9 +26,9 @@
           <%end%>
 
           <% if game.creator == current_user %>
-                <p>Opponent: <%=game.opponent.email%>
+                <p>Adversaire: <%=game.opponent.email%>
           <%else%>
-                <p>Opponent: <%=game.creator.email%>
+                <p>Adversaire: <%=game.creator.email%>
           <%end%>
 
       </div>
